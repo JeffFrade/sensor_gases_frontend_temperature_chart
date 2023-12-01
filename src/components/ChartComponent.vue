@@ -3,11 +3,11 @@
       <h1 class="text-center">Gráfico de Temperaturas</h1>
       <hr/>
 
-      <div class="col-8">
+      <div class="col-md-8">
         <Bar id="temperature-chart" class="chart" :options="chartOptions" :data="chartData"/>
       </div>
 
-      <div class="col-4">
+      <div class="col-md-4">
         <BoxComponent :total="this.$store.getters.getTemperatureMax" color="danger" name="Temperatura Máxima" icon="temperature-high"/>
         <BoxComponent :total="this.$store.getters.getTemperatureMin" color="primary" name="Temperatura Mínima" icon="temperature-low"/>
       </div>
