@@ -1,21 +1,20 @@
 <template>
-    <div class="main">
-        <h1 class="text-center">Gráfico de Temperaturas</h1>
-        <hr>
+    <div class="row">
+      <h1 class="text-center">Gráfico de Temperaturas</h1>
+      <hr/>
+
+      <div class="col-8">
         <Bar id="temperature-chart" class="chart" :options="chartOptions" :data="chartData"/>
+      </div>
+
+      <div class="col-4">
+        <BoxComponent :total="this.$store.getters.getTemperatureMax" color="danger" name="Temperatura Máxima" icon="temperature-high"/>
+        <BoxComponent :total="this.$store.getters.getTemperatureMin" color="primary" name="Temperatura Mínima" icon="temperature-low"/>
+      </div>
     </div>
 </template>
 
 <style scoped>
-    .main {
-        width: 100%;
-        height: 100%;
-    }
-
-    .text-center {
-        text-align: center;
-    }
-
     .chart {
         height: 100%;
         width: 700px;
@@ -25,13 +24,15 @@
 <script>
   import { Bar } from 'vue-chartjs'
   import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+  import BoxComponent from './BoxComponent.vue'
 
   ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
   export default {
     name: 'ChartComponent',
     components: { 
-        Bar 
+      Bar,
+      BoxComponent
     },
 
     computed: {
