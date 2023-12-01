@@ -8,7 +8,9 @@ export default createStore({
       date: [],
       max: [],
       min: []
-    }
+    },
+    maxTemperature: null,
+    minTemperature: null
   },
   mutations: {
     storeToken(state, payload) {
@@ -20,6 +22,8 @@ export default createStore({
       state.temperatures.date = []
       state.temperatures.max = []
       state.temperatures.min = []
+      state.maxTemperature = payload.max
+      state.minTemperature = payload.min
 
       payload.metrics.forEach(item => {
         state.temperatures.date.push(moment(item._id).format('DD/MM/YYYY'))
@@ -39,6 +43,14 @@ export default createStore({
 
     getMinTemperatures(state) {
       return state.temperatures.min
+    },
+
+    getTemperatureMax(state) {
+      return state.maxTemperature
+    },
+
+    getTemperatureMin(state) {
+      return state.minTemperature
     }
   },
   actions: {
