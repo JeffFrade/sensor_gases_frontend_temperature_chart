@@ -8,8 +8,8 @@
       </div>
 
       <div class="col-md-4">
-        <BoxComponent :total="this.$store.getters.getTemperatureMax" color="danger" name="Temperatura Máxima" icon="temperature-high"/>
-        <BoxComponent :total="this.$store.getters.getTemperatureMin" color="primary" name="Temperatura Mínima" icon="temperature-low"/>
+        <BoxComponent v-if="this.$store.getters.getTemperatureMax" :total="this.$store.getters.getTemperatureMax" color="danger" name="Temperatura Máxima" icon="temperature-high"/>
+        <BoxComponent v-if="this.$store.getters.getTemperatureMin" :total="this.$store.getters.getTemperatureMin" color="primary" name="Temperatura Mínima" icon="temperature-low"/>
       </div>
     </div>
 </template>
